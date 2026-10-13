@@ -23,7 +23,7 @@ Menor esforco primeiro. `bloq` = statements que exigem decisao.
 | 1 | FASE A | `PositivarAgendaVisitaCadastradaBackofficeTest` | 0 | 0 | 0 | !! UTF-8 |
 | 2 | FASE A | `CadastrarAgendaTest` | 0 | 0 | 0 | !! UTF-8 |
 | 3 | FASE A | `ReagendarAgendaNaoExecutadaTest` | 0 | 0 | 0 | !! UTF-8 |
-| 4 | FASE A | `ValidarAgendaRecorrenteComDataFimMenorQueDataAtualTest` | 0 | 0 | 0 | !! UTF-8 |
+| 4 | FASE A | `ValidarAgendaRecorrente` | 0 | 0 | 0 | !! UTF-8 |
 | 5 | FASE A | `EmitirPedidoComAgendasVencidasTest` | 0 | 0 | 0 | !! UTF-8 |
 | 6 | FASE A | `ValidarFrequenciaDeAgendaTest` | 0 | 0 | 0 | !! UTF-8 |
 | 7 | FASE A | `RegistrarSaidaClienteTest` | 0 | 0 | 0 | ok |

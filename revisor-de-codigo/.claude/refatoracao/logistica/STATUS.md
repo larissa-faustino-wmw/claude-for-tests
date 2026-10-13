@@ -20,7 +20,7 @@ Menor esforco primeiro. `bloq` = statements que exigem decisao.
 
 | # | Estado | Teste | stmts | auto | bloq | enc |
 |---|---|---|---|---|---|---|
-| 1 | NAO INICIADO | `ValidarSelecaoTransportadoraFechamentoPedidoPorRegiaoTest` | 13 | 13 | 0 | ok |
+| 1 | NAO INICIADO | `ValidarSelecaoTransportadoraFechamentoPedidoPorRegiaoEDataTest` | 13 | 13 | 0 | ok |
 | 2 | NAO INICIADO | `ValidarSelecaoTransportadoraInicioPedidoPorCepTest` | 15 | 15 | 0 | ok |
 | 3 | NAO INICIADO | `ValidarSelecaoTransportadoraQualquerMomentoNoPedidoPorCepTest` | 15 | 15 | 0 | ok |
 | 4 | NAO INICIADO | `ValidarSelecaoTransportadoraQualquerMomentoPedidoObservacaoTest` | 19 | 19 | 0 | ok |

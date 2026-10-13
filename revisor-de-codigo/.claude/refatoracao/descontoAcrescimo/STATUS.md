@@ -20,14 +20,14 @@ Menor esforco primeiro. `bloq` = statements que exigem decisao.
 
 | # | Estado | Teste | stmts | auto | bloq | enc |
 |---|---|---|---|---|---|---|
-| 1 | FASE A | `ValidarAdicaoDescontoManualItemDescontoQuantidadeAplicadoTest` | 0 | 0 | 0 | !! UTF-8 |
-| 2 | FASE A | `EmitirPedidoDescontoPromocionalValorTest` | 0 | 0 | 0 | !! UTF-8 |
+| 1 | FASE A | `manual` | 0 | 0 | 0 | !! UTF-8 |
+| 2 | FASE A | `valor` | 0 | 0 | 0 | !! UTF-8 |
 | 3 | FASE A | `EmitirPedidoDescontoQuantidadePromocionalIgnorandoDescontoTest` | 0 | 0 | 0 | !! UTF-8 |
-| 4 | FASE A | `EmitirPedidoDescontoPromocionalPercentualTest` | 0 | 0 | 0 | !! UTF-8 |
+| 4 | FASE A | `percentual` | 0 | 0 | 0 | !! UTF-8 |
 | 5 | FASE A | `EmitirPedidoDescontoQuantidadePromocionalTest` | 0 | 0 | 0 | !! UTF-8 |
 | 6 | FASE A | `ValidarPedidoVendaExtrapolandoDescontoMaximoTest` | 0 | 0 | 0 | !! UTF-8 |
-| 7 | FASE A | `EmitirPedidoDescontoQuantidadeUnidadeAlternativaTest` | 17 | 17 | 0 | !! UTF-8 |
-| 8 | FASE A | `EmitirPedidoDescontoQuantidadeAgrupadorSimilaridadeTest` | 19 | 19 | 0 | ok |
+| 7 | FASE A | `unidadeAlternativa` | 17 | 17 | 0 | !! UTF-8 |
+| 8 | FASE A | `similar` | 19 | 19 | 0 | ok |
 
 ## Como migrar
 
@@ -84,8 +84,8 @@ falha aqui.
 - `EmitirPedidoDescontoQuantidadePromocionalTest`: primeira linha de
   `TBLVPDESCPROMOCIONAL` tem `QTITEM = 3` mas rowkey com a posicao da
   quantidade zerada; as demais linhas sao coerentes.
-- `EmitirPedidoDescontoQuantidadeAgrupadorSimilaridadeTest` e
-  `EmitirPedidoDescontoQuantidadeUnidadeAlternativaTest`: as faixas de
+- `similar` e
+  `unidadeAlternativa`: as faixas de
   `TBLVPDESCQUANTIDADE` da tabela de preco 2 / produto 10 terminam o rowkey em
   `;8` e `;10` para `QTITEM` 10 e 25 -- fora do padrao das outras oito. No
   segundo teste as assertivas do passo 9 comparam esses rowkeys literalmente,
@@ -95,9 +95,9 @@ falha aqui.
   valor (colapsa no `LinkedHashMap` de `TabelasTestUtil`, sem efeito); `UPDATE`
   sem `WHERE` em `TBLVPITEMTABELAPRECO` mantido sem `WHERE`.
 - Varios testes: `TBLVPESTOQUE` grava `CDLOCALESTOQUE = '1'` com rowkey
-  trazendo `0` nessa posicao. `ValidarAdicaoDescontoManualItemDescontoQuantidadeAplicadoTest`
+  trazendo `0` nessa posicao. `manual`
   tem um bloco `ALTER TABLE` inteiramente comentado (codigo morto, nao migrado).
-- `EmitirPedidoDescontoQuantidadeUnidadeAlternativaTest`: parametro 608
+- `unidadeAlternativa`: parametro 608
   configurado duas vezes com o mesmo valor. Duplicata reproduzida.
 
 **Pendencias para decisao humana** (nao bloqueiam o merge da massa)
@@ -105,5 +105,5 @@ falha aqui.
 - Confirmar com quem mantem os casos se o escopo `NMENTIDADE`/`VLCHAVE` dos
   `UPDATE` de parametro e mesmo irrelevante neste banco base (item 2 acima).
 - Decidir se os rowkeys fora de padrao das faixas do produto 10 devem ser
-  corrigidos -- no `EmitirPedidoDescontoQuantidadeUnidadeAlternativaTest` isso
+  corrigidos -- no `unidadeAlternativa` isso
   implica alterar as assertivas, entao seria outro ticket.

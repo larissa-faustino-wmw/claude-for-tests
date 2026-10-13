@@ -20,20 +20,20 @@ Menor esforco primeiro. `bloq` = statements que exigem decisao.
 
 | # | Estado | Teste | stmts | auto | bloq | enc |
 |---|---|---|---|---|---|---|
-| 1 | FASE A | `CadastrarProspectAprovadoDuasEtapasTest` | 0 | 0 | 0 | !! UTF-8 |
+| 1 | FASE A | `cadastro` | 0 | 0 | 0 | !! UTF-8 |
 | 2 | FASE A | `CadastrarProspectAprovadoDuasEtapasTest_Retorno` | 0 | 0 | 0 | ok |
-| 3 | FASE A | `ExcluirCadastroNovoClienteTest` | 0 | 0 | 0 | ok |
-| 4 | FASE A | `CadastrarNovoClienteTest` | 0 | 0 | 0 | ok |
-| 5 | FASE A | `BuscarDadosPorCNPJNovoClienteTest` | 0 | 0 | 0 | ok |
+| 3 | FASE A | `exclusao` | 0 | 0 | 0 | ok |
+| 4 | FASE A | `cadastro` | 0 | 0 | 0 | ok |
+| 5 | FASE A | `buscaDados` | 0 | 0 | 0 | ok |
 | 6 | FASE A | `CadastrarNovoClienteComCamposDinamicosTest` | 0 | 0 | 0 | ok |
-| 7 | FASE A | `ValidarListagemDeNovosClientesExclusaoDeRegistrosTest` | 0 | 0 | 0 | ok |
+| 7 | FASE A | `listagem` | 0 | 0 | 0 | ok |
 | 8 | FASE A | `ValidarCadastroMultiplosEnderecosClienteTest` | 17 | 17 | 0 | ok |
-| 9 | FASE A | `ValidarEnderecoEntregaClientePedidoTest` | 19 | 19 | 0 | ok |
+| 9 | FASE A | `enderecoEntrega` | 19 | 19 | 0 | ok |
 | 10 | FASE A | `ValidarCadastroEAtualizacaoDeContatosDoClienteTest` | 21 | 21 | 0 | !! UTF-8 |
-| 11 | FASE A | `ValidarAtualizacaoEnderecosClienteComSupervisorTest` | 27 | 27 | 0 | ok |
+| 11 | FASE A | `supervisor` | 27 | 27 | 0 | ok |
 | 12 | FASE A | `ValidarAtualizacaoClienteTest` | 30 | 30 | 0 | !! UTF-8 |
-| 13 | FASE A | `CadastrarMultiplosEnderecosNovosClienteTest` | 1 | 0 | 1 | ok |
-| 14 | FASE A | `ValidarQuantidadeMinimaEnderecosCadastroNovosClientesTest` | 1 | 0 | 1 | ok |
+| 13 | FASE A | `novoCliente` | 1 | 0 | 1 | ok |
+| 14 | FASE A | `minimo` | 1 | 0 | 1 | ok |
 | 15 | FASE A | `BuscarEnderecoPorCEPNoCadastroDeNovoClienteTest` | 2 | 1 | 1 | !! UTF-8 |
 
 ## Bloqueios por causa raiz
@@ -77,8 +77,8 @@ mas nao executado. **Ninguem apague `.sql` algum antes da fase B.**
 **Quatro `.sql` NAO podem ser apagados nunca -- eles guardam DDL.** Foram
 reduzidos so ao `ALTER TABLE`, com cabecalho comentado explicando, e a classe
 correspondente tem `// TODO MIGRACAO`. Sao eles:
-`ExcluirCadastroNovoClienteTest`, `CadastrarMultiplosEnderecosNovosClienteTest`,
-`ValidarQuantidadeMinimaEnderecosCadastroNovosClientesTest` (1 ALTER cada, a
+`exclusao`, `novoCliente`,
+`minimo` (1 ALTER cada, a
 coluna `AD_CONTATOCLIENTE`) e `CadastrarNovoClienteComCamposDinamicosTest`
 (10 ALTER). Para esses quatro, a fase B se limita a confirmar que o teste passa
 com o `.sql` ja reduzido -- renomear para `.bak` faz a coluna sumir e o teste
@@ -88,13 +88,13 @@ quebra por motivo alheio a migracao.
 "exigem decisao humana", 13 eram DDL de verdade e 3 eram
 `CDPARAMETRO IN ('941','389')` -- que nao e bloqueio, e uma chamada
 `setParametro` por codigo. Ocorreu em `BuscarEnderecoPorCEPNoCadastroDeNovoClienteTest`,
-`ValidarListagemDeNovosClientesExclusaoDeRegistrosTest` e
-`BuscarDadosPorCNPJNovoClienteTest`, os tres migrados por completo. Vale
+`listagem` e
+`buscaDados`, os tres migrados por completo. Vale
 ensinar o padrao ao `massa.py` em vez de continuar caindo nele.
 
 **`_Retorno.sql` confirmou o precedente de autorizacaoNegociacao:** vai para o
 corpo do teste, nunca para `prepararMassaDeDados()`. Detalhe na anotacao
-especifica de `CadastrarProspectAprovadoDuasEtapasTest`, abaixo.
+especifica de `cadastro`, abaixo.
 
 **Defeito real encontrado -- os dois `.sql` em UTF-8 gravavam mojibake no
 banco.** `DatabasePrepareTestUtil.execAbsoluteFileSQL` le o arquivo com
@@ -128,7 +128,7 @@ simples -- equivalente em SQLite, mas e uma divergencia entre os arquivos.
 
 **Pendencias para o time:**
 
-- `CadastrarProspectAprovadoDuasEtapasTest`: `CDNOVOCLIENTE` divergente entre
+- `cadastro`: `CDNOVOCLIENTE` divergente entre
   `TBLVPNOVOCLIENTE` ('3') e `TBLVPNOVOCLIENTEANA` ('461613026'). Confirmar com
   quem conhece o CT-LVP de prospect em duas etapas.
 - `ValidarAtualizacaoClienteTest` esta em pasta duplicada

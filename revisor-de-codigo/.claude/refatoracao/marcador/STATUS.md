@@ -21,7 +21,7 @@ Menor esforco primeiro. `bloq` = statements que exigem decisao.
 | # | Estado | Teste | stmts | auto | bloq | enc |
 |---|---|---|---|---|---|---|
 | 1 | NAO INICIADO | `ApresentarMarcadorClienteTest` | 3 | 2 | 1 | ok |
-| 2 | NAO INICIADO | `ApresentarMarcadorProdutoporClienteTest` | 3 | 2 | 1 | ok |
+| 2 | NAO INICIADO | `ApresentarMarcadorProdutoClienteTest` | 3 | 2 | 1 | ok |
 | 3 | NAO INICIADO | `ApresentarMarcadorProdutoTest` | 3 | 2 | 1 | ok |
 | 4 | NAO INICIADO | `ApresentarMarcadorPedidoTest` | 6 | 5 | 1 | ok |
 

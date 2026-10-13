@@ -38,7 +38,7 @@ Menor esforco primeiro. `bloq` = statements que exigem decisao.
 | 16 | NAO INICIADO | `EmitirPedidoUtilizandoVerbaFlexGrupoProdutoExtrapolandoSaldoTest` | 8 | 8 | 0 | ok |
 | 17 | NAO INICIADO | `EmitirPedidoUtilizandoVerbaFlexPorGrupoProdutoTest` | 8 | 8 | 0 | ok |
 | 18 | NAO INICIADO | `ValidarConsumoVerbaGrupoSaldoPersonalizadoTest` | 9 | 9 | 0 | !! UTF-8 |
-| 19 | NAO INICIADO | `ValidarPedidoSemSaldoVerbaRepresentanteTest` | 15 | 15 | 0 | ok |
+| 19 | NAO INICIADO | `saldoZero` | 15 | 15 | 0 | ok |
 
 ## Como migrar
 

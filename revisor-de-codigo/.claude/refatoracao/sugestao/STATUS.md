@@ -28,7 +28,7 @@ Menor esforco primeiro. `bloq` = statements que exigem decisao.
 | 6 | NAO INICIADO | `EmitirPedidoKitFechadoTresQuantidadeValoresDefinidosClienteTest` | 11 | 11 | 0 | ok |
 | 7 | NAO INICIADO | `EmitirPedidoSemProdutoCriticoTest` | 13 | 13 | 0 | ok |
 | 8 | NAO INICIADO | `EmitirPedidoComProdutoCriticoAutorizarWebTest` | 13 | 13 | 0 | ok |
-| 9 | NAO INICIADO | `EmitirPedidoKitFechadoTresValoresDefinidosEAgrupadorSimilaridadeTest` | 13 | 13 | 0 | ok |
+| 9 | NAO INICIADO | `EmitirPedidoKitFechadoTresQuantidadeValoresDefinidosTest` | 13 | 13 | 0 | ok |
 | 10 | NAO INICIADO | `EmitirPedidoKitFechadoUnidadeAlternativaTest` | 16 | 16 | 0 | ok |
 
 ## Como migrar
